@@ -1,2 +1,38 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h2>Add New Item</h2>
+
+<%= from_for @item do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, class:'form-control' %><br />
+    </div>
+
+    <div class="form-group">
+      <%= f.label :category %><br />
+      <%= f.text_field :category_id, Category.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'}, class:'form-control' %><br />
+    </div>
+
+    <div class="form-group">
+      <%= f.label :specifications %><br />
+      <%= f.text_field :specifications, class:'form-control' %><br />
+    </div>
+
+    <div class="form-group">
+      <%= f.label :descriptions %><br />
+      <%= f.text_field :descriptions, class:'form-control' %><br />
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price %><br />
+      <%= f.text_field :price, class:'form-control' %><br />
+    </div>
+
+    <div class="form-group">
+      <%= f.label :buy %><br />
+      <%= f.text_field :buy, class:'form-control' %><br />
+    </div>
+
+    <%= f.submit "Submit", class:'btn btn-primary' %>
+    <%= link_to "Cancel", items_path, class:'btn btn-default' %>
+
+<% end %>
